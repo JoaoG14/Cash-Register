@@ -21,6 +21,16 @@ const cashInput = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
 const purchaseButton = document.getElementById("purchase-btn");
 
+let oneHundredCount = 0;
+let twentyCount = 0;
+let tenCount = 0;
+let fiveCount = 0;
+let oneCount = 0;
+let quarterCount = 0;
+let dimeCount = 0;
+let nickelCount = 0;
+let pennyCount = 0;
+
 purchaseButton.addEventListener("click", () => {
 
   let cash = Number(cashInput.value);
@@ -33,6 +43,9 @@ purchaseButton.addEventListener("click", () => {
     changeDue.innerHTML = "No change due - customer paid with exact cash";
     return;
   }
+
+  
+
 
   cash = cash - price;
 
@@ -84,6 +97,9 @@ purchaseButton.addEventListener("click", () => {
   }
 
   if (cash < 0.01 && cashInDrawer > 0) {
-    changeDue.innerHTML = `Status: OPEN`;
+    changeDue.innerHTML = `Status: OPEN `;
+    if (oneHundredCount > 0) {
+      changeDue.innerHTML += `ONE HUNDRED: $${oneHundredCount * 100}`
+    }
   }
 });
