@@ -10,3 +10,13 @@ let cid = [
   ["TWENTY", 60],
   ["ONE HUNDRED", 100]
 ];
+
+const cashInput = document.getElementById("cash")
+const changeDue = document.getElementById("change-due")
+const purchaseButton = document.getElementById("purchase-btn")
+
+purchaseButton.addEventListener("click", () => {
+  if (cashInput.value < 1.87) {
+    alert("Customer does not have enough money to purchase the item")
+  }
+})
