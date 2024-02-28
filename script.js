@@ -31,7 +31,38 @@ purchaseButton.addEventListener("click", () => {
     cash -= 100;
     cid[8][1] -= 100;
   }
-  
+  while (cash > 20 && cid[7][1] >= 20) {
+    cash -= 20;
+    cid[7][1] -= 20;
+  }
+  while (cash > 10 && cid[6][1] >= 10) {
+    cash -= 10;
+    cid[6][1] -= 10;
+  }
+  while (cash > 5 && cid[5][1] >= 5) {
+    cash -= 5;
+    cid[5][1] -= 5;
+  }
+  while (cash > 1 && cid[4][1] >= 1) {
+    cash -= 1;
+    cid[4][1] -= 1;
+  }
+  while (cash > 0.25 && cid[3][1] >= 0.25) {
+    cash -= 0.25;
+    cid[3][1] -= 0.25;
+  }
+  while (cash > 0.1 && cid[2][1] >= 0.1) {
+    cash -= 0.1;
+    cid[2][1] -= 0.1;
+  }
+  while (cash > 0.05 && cid[1][1] >= 0.05) {
+    cash -= 0.05;
+    cid[1][1] -= 0.05;
+  }
+  while (cash > 0.01 && cid[0][1] >= 0.01) {
+    cash -= 0.01;
+    cid[0][1] -= 0.01;
+  }
 
   
 
