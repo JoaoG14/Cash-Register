@@ -11,7 +11,11 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
+let cashInDrawer = 0;
 
+for (let i = 0; i < cid.length; i++) {
+  cashInDrawer = cashInDrawer + cid[i][1];
+}
 
 const cashInput = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
@@ -21,14 +25,16 @@ purchaseButton.addEventListener("click", () => {
 
   let cash = Number(cashInput.value);
 
-  if (cash < 1.87) {
+  if (cash < price) {
     alert("Customer does not have enough money to purchase the item");
     return;
   }
-  if (cash === 1.87) {
+  if (cash === price) {
     changeDue.innerHTML = "No change due - customer paid with exact cash";
     return;
   }
+
+  cash = cash - price;
 
   while (cash > 100 && cid[8][1] >= 100) {
     cash -= 100;
@@ -67,18 +73,17 @@ purchaseButton.addEventListener("click", () => {
     cid[0][1] -= 0.01;
   }
 
-  console.log(cash)
+  console.log(cash);
 
   if (cash >= 0.01) {
-    changeDue.innerHTML = `Status: INSUFFICIENT_FUNDS`
+    changeDue.innerHTML = `Status: INSUFFICIENT_FUNDS`;
   }
 
   if (cash === cashInDrawer) {
-    changeDue.innerHTML = `Status: CLOSED`
+    changeDue.innerHTML = `Status: CLOSED`;
   }
 
-  if (cash === 0 && cashInDrawer > 0) {
-    changeDue.innerHTML = `Status: OPENw`
+  if (cash < 0.01 && cashInDrawer > 0) {
+    changeDue.innerHTML = `Status: OPEN`;
   }
-
 });
