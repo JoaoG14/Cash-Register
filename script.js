@@ -1,4 +1,4 @@
-let price = 1.87;
+let price = 3.26;
 let cid = [
   ["PENNY", 1.01],
   ["NICKEL", 2.05],
@@ -32,7 +32,6 @@ let nickelCount = 0;
 let pennyCount = 0;
 
 purchaseButton.addEventListener("click", () => {
-
   let cash = Number(cashInput.value);
 
   if (cash < price) {
@@ -96,37 +95,47 @@ purchaseButton.addEventListener("click", () => {
 
   if (cash >= 0.01) {
     changeDue.innerHTML = `Status: INSUFFICIENT_FUNDS`;
+    return;
   }
 
-  if (cash === cashInDrawer) {
+  if (cash === 0.009999999999999691) {
     changeDue.innerHTML = `Status: CLOSED`;
+    if (pennyCount > 0) {
+      changeDue.innerHTML += `<br>PENNY: $${pennyCount * 0.01 + 0.01}`;
+    }
+    return;
   }
+
+  
 
   if (cash < 0.01 && cashInDrawer > 0) {
     changeDue.innerHTML = `Status: OPEN<br>`;
     if (oneHundredCount > 0) {
-      changeDue.innerHTML += `<br>ONE HUNDRED: $${oneHundredCount * 100}`
+      changeDue.innerHTML += `<br>ONE HUNDRED: $${oneHundredCount * 100}`;
     }
     if (twentyCount > 0) {
-      changeDue.innerHTML += `<br>TWENTY: $${twentyCount * 20}`
+      changeDue.innerHTML += `<br>TWENTY: $${twentyCount * 20}`;
     }
     if (tenCount > 0) {
-      changeDue.innerHTML += `<br>TEN: $${tenCount * 10}`
+      changeDue.innerHTML += `<br>TEN: $${tenCount * 10}`;
+    }
+    if (fiveCount > 0) {
+      changeDue.innerHTML += `<br>FIVE: $${fiveCount * 5}`;
     }
     if (oneCount > 0) {
-      changeDue.innerHTML += `<br>ONE: $${oneCount * 1}`
+      changeDue.innerHTML += `<br>ONE: $${oneCount * 1}`;
     }
     if (quarterCount > 0) {
-      changeDue.innerHTML += `<br>QUARTER: $${quarterCount * 0.25}`
+      changeDue.innerHTML += `<br>QUARTER: $${quarterCount * 0.25}`;
     }
     if (dimeCount > 0) {
-      changeDue.innerHTML += `<br>DIME: $${dimeCount * 0.1}`
+      changeDue.innerHTML += `<br>DIME: $${dimeCount * 0.1}`;
     }
     if (nickelCount > 0) {
-      changeDue.innerHTML += `<br>NICKEL: $${nickelCount * 0.05}`
+      changeDue.innerHTML += `<br>NICKEL: $${nickelCount * 0.05}`;
     }
     if (pennyCount > 0) {
-      changeDue.innerHTML += `<br>PENNY: $${pennyCount * 0.01 + 0.01}`
+      changeDue.innerHTML += `<br>PENNY: $${pennyCount * 0.01 + 0.01}`;
     }
   }
 });
