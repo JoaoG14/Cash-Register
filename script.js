@@ -44,46 +44,52 @@ purchaseButton.addEventListener("click", () => {
     return;
   }
 
-  
-
-
   cash = cash - price;
 
-  while (cash > 100 && cid[8][1] >= 100) {
+  while (cash >= 100 && cid[8][1] >= 100) {
     cash -= 100;
     cid[8][1] -= 100;
+    oneHundredCount++;
   }
-  while (cash > 20 && cid[7][1] >= 20) {
+  while (cash >= 20 && cid[7][1] >= 20) {
     cash -= 20;
     cid[7][1] -= 20;
+    twentyCount++;
   }
-  while (cash > 10 && cid[6][1] >= 10) {
+  while (cash >= 10 && cid[6][1] >= 10) {
     cash -= 10;
     cid[6][1] -= 10;
+    tenCount++;
   }
-  while (cash > 5 && cid[5][1] >= 5) {
+  while (cash >= 5 && cid[5][1] >= 5) {
     cash -= 5;
     cid[5][1] -= 5;
+    fiveCount++;
   }
-  while (cash > 1 && cid[4][1] >= 1) {
+  while (cash >= 1 && cid[4][1] >= 1) {
     cash -= 1;
     cid[4][1] -= 1;
+    oneCount++;
   }
-  while (cash > 0.25 && cid[3][1] >= 0.25) {
+  while (cash >= 0.25 && cid[3][1] >= 0.25) {
     cash -= 0.25;
     cid[3][1] -= 0.25;
+    quarterCount++;
   }
-  while (cash > 0.1 && cid[2][1] >= 0.1) {
+  while (cash >= 0.1 && cid[2][1] >= 0.1) {
     cash -= 0.1;
     cid[2][1] -= 0.1;
+    dimeCount++;
   }
-  while (cash > 0.05 && cid[1][1] >= 0.05) {
+  while (cash >= 0.05 && cid[1][1] >= 0.05) {
     cash -= 0.05;
     cid[1][1] -= 0.05;
+    nickelCount++;
   }
-  while (cash > 0.01 && cid[0][1] >= 0.01) {
+  while (cash >= 0.01 && cid[0][1] >= 0.01) {
     cash -= 0.01;
     cid[0][1] -= 0.01;
+    pennyCount++;
   }
 
   console.log(cash);
@@ -97,9 +103,30 @@ purchaseButton.addEventListener("click", () => {
   }
 
   if (cash < 0.01 && cashInDrawer > 0) {
-    changeDue.innerHTML = `Status: OPEN `;
+    changeDue.innerHTML = `Status: OPEN<br>`;
     if (oneHundredCount > 0) {
-      changeDue.innerHTML += `ONE HUNDRED: $${oneHundredCount * 100}`
+      changeDue.innerHTML += `<br>ONE HUNDRED: $${oneHundredCount * 100}`
+    }
+    if (twentyCount > 0) {
+      changeDue.innerHTML += `<br>TWENTY: $${twentyCount * 20}`
+    }
+    if (tenCount > 0) {
+      changeDue.innerHTML += `<br>TEN: $${tenCount * 10}`
+    }
+    if (oneCount > 0) {
+      changeDue.innerHTML += `<br>ONE: $${oneCount * 1}`
+    }
+    if (quarterCount > 0) {
+      changeDue.innerHTML += `<br>QUARTER: $${quarterCount * 0.25}`
+    }
+    if (dimeCount > 0) {
+      changeDue.innerHTML += `<br>DIME: $${dimeCount * 0.1}`
+    }
+    if (nickelCount > 0) {
+      changeDue.innerHTML += `<br>NICKEL: $${nickelCount * 0.05}`
+    }
+    if (pennyCount > 0) {
+      changeDue.innerHTML += `<br>PENNY: $${pennyCount * 0.01 + 0.01}`
     }
   }
 });
