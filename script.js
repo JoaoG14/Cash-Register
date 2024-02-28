@@ -16,11 +16,23 @@ const changeDue = document.getElementById("change-due");
 const purchaseButton = document.getElementById("purchase-btn");
 
 purchaseButton.addEventListener("click", () => {
-  if (cashInput.value < 1.87) {
+  let cash = Number(cashInput.value);
+  
+  if (cash < 1.87) {
     alert("Customer does not have enough money to purchase the item");
     return;
   }
-  if (parseInt(cashInput.value) === 1.87) {
-    changeDue.innerText = "No change due - customer paid with exact cash"
+  if (cash === 1.87) {
+    changeDue.innerHTML = "No change due - customer paid with exact cash";
+    return;
   }
+
+  while (cash > 100 && cid[8][1] >= 100) {
+    cash -= 100;
+    cid[8][1] -= 100;
+  }
+  
+
+  
+
 });
