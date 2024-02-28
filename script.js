@@ -11,13 +11,16 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
+
+
 const cashInput = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
 const purchaseButton = document.getElementById("purchase-btn");
 
 purchaseButton.addEventListener("click", () => {
+
   let cash = Number(cashInput.value);
-  
+
   if (cash < 1.87) {
     alert("Customer does not have enough money to purchase the item");
     return;
@@ -64,6 +67,18 @@ purchaseButton.addEventListener("click", () => {
     cid[0][1] -= 0.01;
   }
 
-  
+  console.log(cash)
+
+  if (cash >= 0.01) {
+    changeDue.innerHTML = `Status: INSUFFICIENT_FUNDS`
+  }
+
+  if (cash === cashInDrawer) {
+    changeDue.innerHTML = `Status: CLOSED`
+  }
+
+  if (cash === 0 && cashInDrawer > 0) {
+    changeDue.innerHTML = `Status: OPENw`
+  }
 
 });
